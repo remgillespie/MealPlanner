@@ -5,14 +5,14 @@ public class Ingredient
 	private var quantity: 0.0
 	private var unit: String? //measurement unit; not all items have a measurement, so it's optional
 	
-	init(_ name: String, _ item_type: String, _ quantity: Float)
+	public init(_ name: String, _ item_type: String, _ quantity: Float)
 	{
 		self.name = name
 		self.item_type = item_type
 		self.quantity = quantity
 	}
 	
-	init(_name: String, _ item_type: String, _ quantity: Float, _ unit: String)
+	public init(_name: String, _ item_type: String, _ quantity: Float, _ unit: String)
 	{
 		self.name = name
 		self.item_type = item_type
