@@ -1,7 +1,10 @@
+/*Ingredient acts primarily as a wrapper to consolidate and allow an easy way to access the appropriate data types
+* and modify them, should changes need to be made.
+*/
 public class Ingredient
 {
-	private var name: " "
-	private var item_type: " "
+	private var name: ""
+	private var item_type: ""
 	private var quantity: 0.0
 	private var unit: String? //measurement unit; not all items have a measurement, so it's optional
 	

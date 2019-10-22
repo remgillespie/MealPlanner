@@ -1,4 +1,7 @@
-class Days
+public class Day
 {
-	var recipe: Recipe?
+	/*Each day is not required to have a recipe
+	*/
+	private var recipe: Recipe?
+	
 }
