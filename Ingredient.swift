@@ -35,22 +35,24 @@ public class Ingredient
 	}
 
 	/*Setter for name
+		should change to allow for interactive input
 	*/
-	func change_name(to new_name: String)
+	func set_name(to new_name: String)
 	{
 		self.name = new_name
 	}
 	
 	/*Setter for item_type
 	*/
-	func change_item_type(to new_type: String)
+	func set_item_type(to new_type: String)
 	{
 		self.item_type = new_type
 	}
 	
 	/*Setter for unit
+		should change to allow for interactive input
 	*/
-	func change_units(to new_unit: String)
+	func set_units(to new_unit: String)
 	{
 		self.unit = new_unit
 	}
