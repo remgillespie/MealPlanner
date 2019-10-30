@@ -1,0 +1,16 @@
+Download file for git on Windows (should download automatically):
+	https://git-scm.com/download/win
+
+Repository name is located on GitHub on repo we want under clone/download button
+To clone repository:
+	git clone <name_of_repo>
+	
+To add to branch:
+	while: still more files to add
+		git add <name_of_file>
+		git commit -m "some comment goes here"
+	git checkout -b <name_of_branch>
+	git add origin <branch_name>
+	
+To get most recent updates to repository:
+	git pull origin master
