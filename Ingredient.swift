@@ -6,7 +6,7 @@ public class Ingredient
 	private var name: ""
 	private var item_type: ""
 	private var quantity: 0.0
-	private var unit: String? //measurement unit; not all items have a measurement, so it's optional
+	private var unit: ""
 	
 	public init(_ name: String, _ item_type: String, _ quantity: Float)
 	{
@@ -44,7 +44,7 @@ public class Ingredient
 	
 	/*Setter for item_type
 	*/
-	func set_item_type(to new_type: String)
+	public func set_item_type(to new_type: String)
 	{
 		self.item_type = new_type
 	}
@@ -52,30 +52,47 @@ public class Ingredient
 	/*Setter for unit
 		should change to allow for interactive input
 	*/
-	func set_units(to new_unit: String)
+	public func set_units(to new_unit: String)
 	{
 		self.unit = new_unit
 	}
 	
 	/*Getter for name
 	*/
-	func get_name() -> String
+	public func get_name() -> String
 	{
 		return self.name
 	}
 	
 	/*Getter for item_type
 	*/
-	func get_item_type() -> String
+	public func get_item_type() -> String
 	{
 		return self.item_type
 	}
 	
 	/*Getter for unit
 	*/
-	func get_unit() -> String
+	public func get_unit() -> String
 	{
 		return self.unit
+	}
+	
+	/*Compares an Ingredient
+	*	Return functions as a traditional comparator
+	*/
+	public func compare(_item: Ingredient)
+	{
+		var retval = 0
+		/*Might need to use zip() or use the two lines above*/
+		for (letter1, letter2) in (self.name, item)
+		{
+			if((retval = letter1 - letter2) != 0)
+			{
+				break
+			}
+		}
+		return retval
 	}
 }
 
