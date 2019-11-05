@@ -1,7 +1,10 @@
+/*Ingredient acts primarily as a wrapper to consolidate and allow an easy way to access the appropriate data types
+* and modify them, should changes need to be made.
+*/
 public class Ingredient
 {
-	private var name: " "
-	private var item_type: " "
+	private var name: ""
+	private var item_type: ""
 	private var quantity: 0.0
 	private var unit: String? //measurement unit; not all items have a measurement, so it's optional
 	
@@ -32,22 +35,24 @@ public class Ingredient
 	}
 
 	/*Setter for name
+		should change to allow for interactive input
 	*/
-	func change_name(to new_name: String)
+	func set_name(to new_name: String)
 	{
 		self.name = new_name
 	}
 	
 	/*Setter for item_type
 	*/
-	func change_item_type(to new_type: String)
+	func set_item_type(to new_type: String)
 	{
 		self.item_type = new_type
 	}
 	
 	/*Setter for unit
+		should change to allow for interactive input
 	*/
-	func change_units(to new_unit: String)
+	func set_units(to new_unit: String)
 	{
 		self.unit = new_unit
 	}
