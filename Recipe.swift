@@ -4,18 +4,20 @@ public class Recipe
 {
 	//list of ingredients or an array of ingredients, if an array will need to resize dynamically
 	private var meal: String
-	private var ingredient = Ingredient?
+	private var list: Set<Ingredient>()
 	private var directions: ""
 	
-	public init(with meal_name: String)
+	//need to check that we can pass Sets in this fashion
+	public init(with meal_name: String, with ingredients: Set<Ingredients>)
 	{
 		self.meal = meal_name
-		self.ingredients = ingredients
+		self.list = ingredients
 	}
 	
-	public init(with meal_name: String, using directions: String)
+	public init(with meal_name: String, with ingredients: Set<Ingredients>, using directions: String)
 	{
 		self.meal = meal_name
+		self.list = ingredients
 		self.directions = directions
 	}
 	
@@ -27,13 +29,24 @@ public class Recipe
 		self.meal = name
 	}
 	
-	/*Sets an ingredient into the list if it is not already present, if it is present the user with an
-		option to replace it.
-	Ideally we would like for interactive change of a string so as to not
-		constantly overwrite, but modify.*/
-	public func set_ingredients(with item: Ingredient)
+	/*Sets an ingredient(item) into the list.
+	*	option = 1: Sets the item into the list unconditionally
+	*	option = 2: Sets the item into the list only if it isn't present
+	*	Returns the boolean value of the successful insertion
+	*/
+	public func set_ingredients(with item: Ingredient, using option: Int) -> Bool
 	{
-		self.ingredient = item
+		var bool_val = false
+		if(option)/*Option 1: Always places item into the list*/
+		{
+			list.update(item)
+			bool_val = true
+		}
+		else/*Option 2*/
+		{
+			bool_val = (list.insert(item)).0
+		}
+		return bool_val
 	}
 	
 	/*Overrides the class variable directions with text.
@@ -53,9 +66,9 @@ public class Recipe
 	
 	/*Returns the class variable ingredient
 	*/
-	public func get_ingredient() -> Ingredient
+	public func get_ingredients() -> EnumeratedSequence<Set<Ingredient>>
 	{
-		return self.ingredient
+		return self.list.enumerated()
 	}
 	
 	/*Returns the directions otherwise states that there aren't any*/
@@ -68,11 +81,11 @@ public class Recipe
 		traditional comparator return values*/
 	public func compare_names(_name: String) -> Int
 	{
-		var name1 = self.meal.enumerated()
-		var name2 = name.enumerated()
+		/*var name1 = self.meal.enumerated()
+		var name2 = name.enumerated()*/
 		var retval = 0
-		
-		for (letter1, letter2) in (name1, name2)
+		/*Might need to use zip() or use the two lines above*/
+		for (letter1, letter2) in (self.meal, name)
 		{
 			if((retval = letter1 - letter2) != 0)
 			{
@@ -80,6 +93,11 @@ public class Recipe
 			}
 		}
 		return retval
+	}
+	
+	public func is_member(_item: Ingredient) -> Bool
+	{
+		return list.contains(item)
 	}
 }
 
