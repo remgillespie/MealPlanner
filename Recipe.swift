@@ -64,5 +64,24 @@ public class Recipe
 		return (directions!="") ? self.directions : "No directions"
 	}
 	
-	
+	/*Compares difference in letters of a string
+		traditional comparator return values*/
+	public func compare_names(_name: String) -> Int
+	{
+		var name1 = self.meal.enumerated()
+		var name2 = name.enumerated()
+		var retval = 0
+		
+		for (letter1, letter2) in (name1, name2)
+		{
+			if((retval = letter1 - letter2) != 0)
+			{
+				break
+			}
+		}
+		return retval
+	}
 }
+
+
+
