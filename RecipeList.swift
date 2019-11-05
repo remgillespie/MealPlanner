@@ -17,9 +17,19 @@ public class RecipeList
 		
 	}
 	
+	/*Removes the specified ingredient name if it is present within the list
+	*	Returns the item if it was in the list, otherwise returns nil
+	*/
 	public remove_recipe(using name: String) -> Recipe
 	{
-		
+		for (index, item) in list.enumerated()
+		{
+			if(!item.compare_names(name))/*The same item*/
+			{
+				return list.remove(item)
+			}
+		}
+		return nil
 	}
 	
 	/*Checks if the given recipe name is a member of the list
@@ -28,10 +38,9 @@ public class RecipeList
 	public is_member(using name: String) -> Bool
 	{
 		var bool_val = true
-		var enumeration = list.enumerated()
-		for item in enumeration
+		for item in list.enumerated()
 		{
-			if(item.compare_names(name)!=0)
+			if(item.compare_names(name))/*Item is in list*/
 			{
 				bool_val = false
 			}
