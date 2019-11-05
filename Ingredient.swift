@@ -85,7 +85,7 @@ public class Ingredient
 	{
 		var retval = 0
 		/*Might need to use zip() or use the two lines above*/
-		for (letter1, letter2) in (self.name, item)
+		for (letter1, letter2) in (self.name, item.name)
 		{
 			if((retval = letter1 - letter2) != 0)
 			{
