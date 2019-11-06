@@ -2,7 +2,7 @@ import Ingredient
 
 public class GroceryList
 {
-	private var list = Set<Ingredient>()?
+	private var list = nil
 	public var size = 0
 	
 	public init()
