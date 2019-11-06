@@ -1,13 +1,24 @@
+import Recipe
+
 public class RecipeList
 {
-	private list: Set<Recipe>()
+	private var list = nil
 	
+	public init()
+	{
+		list = Set<Recipe>()
+	}
+	
+	public init(new_list: Set<Recipe>)
+	{
+		list = new_list
+	}
 	/*Inserts the item into the list
 	*	option=1: Inserts the item unconditionally
 	*	option=2: Insert the item if it isn't already a member
 	*	Returns the boolean value of the success
 	*/
-	public func add_recipe(_item: Recipe, _option: Int) -> Bool
+	public func add_recipe(item: Recipe, _option: Int) -> Bool
 	{
 		var bool_val = false
 		if(option)/*Option 1*/
@@ -25,7 +36,7 @@ public class RecipeList
 	/*Removes the specified ingredient name if it is present within the list
 	*	Returns the item if it was in the list, otherwise returns nil
 	*/
-	public func remove_recipe(_name: String) -> Recipe?
+	public func remove_recipe(name: String) -> Recipe?
 	{
 		for (index, item) in list.enumerated()
 		{
@@ -48,10 +59,10 @@ public class RecipeList
 	/*Checks if the given recipe name is a member of the list
 	Returns the boolean value of the statement.
 	*/
-	public func is_member(_name: String) -> Bool
+	public func is_member(name: String) -> Bool
 	{
 		var bool_val = false
-		for item in list.enumerated()
+		for (index, item) in list.enumerated()
 		{
 			if(!item.compare(name))/*Item is in list*/
 			{
