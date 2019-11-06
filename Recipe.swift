@@ -10,7 +10,7 @@ public class Recipe
 	public init(meal_name: String)
 	{
 		self.meal = meal_name
-		self.list = Set<Ingredients>?
+		self.list = Set<Ingredients>()
 	}
 	
 	//need to check that we can pass Sets in this fashion
