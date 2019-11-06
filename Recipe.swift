@@ -24,17 +24,17 @@ public class Recipe
 	/*Overrides the class variable meal with name.
 	Ideally we would like for interactive change of a string so as to not
 		constantly overwrite, but modify instead.*/
-	public func set_meal_name(with name: String)
+	public func set_meal_name(_name: String)
 	{
 		self.meal = name
 	}
 	
-	/*Sets an ingredient(item) into the list.
-	*	option = 1: Sets the item into the list unconditionally
-	*	option = 2: Sets the item into the list only if it isn't present
+	/*Adds an ingredient(item) into the list.
+	*	option = 1: Adds the item into the list unconditionally
+	*	option = 2: Adds the item into the list only if it isn't present
 	*	Returns the boolean value of the successful insertion
 	*/
-	public func set_ingredients(with item: Ingredient, using option: Int) -> Bool
+	public func add_ingredients(_item: Ingredient, _option: Int) -> Bool
 	{
 		var bool_val = false
 		if(option)/*Option 1: Always places item into the list*/
@@ -52,7 +52,7 @@ public class Recipe
 	/*Overrides the class variable directions with text.
 	Ideally we would like for interactive change of a string so as to not
 		constantly overwrite, but modify instead.*/
-	public func set_directions(with text: String)
+	public func set_directions(_text: String)
 	{
 		self.directions = text
 	}
@@ -79,7 +79,7 @@ public class Recipe
 	
 	/*Compares difference in letters of a string
 		traditional comparator return values*/
-	public func compare_names(_name: String) -> Int
+	public func compare(_name: String) -> Int
 	{
 		/*var name1 = self.meal.enumerated()
 		var name2 = name.enumerated()*/

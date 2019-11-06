@@ -2,17 +2,16 @@
 
 public class GroceryList
 {
-	private var list = Set<(Ingredient, Bool)>()
+	private var list = Set<Ingredient>()
 	public var size = 0
-	private var notes = ""
 	
 	/*Adds an item to the grocery list and increments the size of the list
-	if the item did not already exist in the list.
-	Returns true upon successful insertion, false otherwise.
+	* if the item did not already exist in the list.
+	*	Returns true upon successful insertion, false otherwise.
 	*/
-	public func add_item(to_list item: Ingredient) -> Bool
+	public func add_item(_item: Ingredient) -> Bool
 	{
-		var valid_insert = list.insert((Ingredient,0))
+		var valid_insert = list.insert(Ingredient)
 		if(valid_insert.0==true)
 		{
 			self.size += 1
@@ -21,34 +20,41 @@ public class GroceryList
 	}
 	
 	/*Removes an item from the list.
-	Returns nil if the item was not in the list, otherwise the item is returned
+	*	Returns nil if the item was not in the list, otherwise the item is returned
 	*/
-	
-	//not done
-	public func remove_item(from_list item: Ingredient) -> Ingredient?
+	public func remove_item(_name: String) -> Ingredient?
 	{
-		return list.remove()
+		for (index, item) in list.enumerated()
+		{
+			if(!item.compare(name))/*In list*/
+			{
+				self.size -= 1
+				return list.remove(item)
+			}
+		}
+		return nil
 	}
 	
-	/*Checks an item off a grocery list
-	*/
-	
-	//not done
-	public check_item(from_list item:Ingredient) -> Bool
+	public func get_list() -> EnumeratedSequence<Set<Ingredient>>
 	{
-		return 0
+		return list.enumerated()
 	}
 	
-	public display_list()
+	public func is_member(_name: String)
 	{
-		var current = 0
-		
+		var bool_val = false
+		for (index, item) in list
+		{
+			if(item.compare(name))/*In list*/
+			{
+				bool_val = true 
+			}
+		}
+		return bool_val
 	}
 	
-	/*Adds/modifies notes
-		should allow for interactive input*/
-	public modify_notes()
+	public is_empty() -> Bool
 	{
-		
+		return list.isEmpty()
 	}
 }

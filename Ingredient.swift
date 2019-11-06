@@ -28,7 +28,7 @@ public class Ingredient
 	Can be treated as a setter and a getter
 	Returns the quantity
 	*/
-	func adust_quantity(by amount: Float) -> Float
+	public func adust_quantity(_amount: Float) -> Float
 	{
 		self.quantity += amount
 		return self.quantity
@@ -37,14 +37,14 @@ public class Ingredient
 	/*Setter for name
 		should change to allow for interactive input
 	*/
-	func set_name(to new_name: String)
+	public func set_name(_new_name: String)
 	{
 		self.name = new_name
 	}
 	
 	/*Setter for item_type
 	*/
-	public func set_item_type(to new_type: String)
+	public func set_item_type(_new_type: String)
 	{
 		self.item_type = new_type
 	}
@@ -52,7 +52,7 @@ public class Ingredient
 	/*Setter for unit
 		should change to allow for interactive input
 	*/
-	public func set_units(to new_unit: String)
+	public func set_units(_new_unit: String)
 	{
 		self.unit = new_unit
 	}
