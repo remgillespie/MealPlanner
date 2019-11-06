@@ -1,4 +1,3 @@
-/*Note: This class is incomplete*/
 import Ingredient
 
 public class GroceryList
