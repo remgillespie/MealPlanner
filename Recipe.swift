@@ -9,10 +9,6 @@ public class Recipe: Equatable, Hashable
 	public init(meal_name: String)
 	{
 		self.meal = meal_name
-<<<<<<< Updated upstream
-		self.list = Set<Ingredients>()
-=======
->>>>>>> Stashed changes
 	}
 	
 	public init(meal_name: String, ingredients: Set<Ingredient>)
