@@ -1,7 +1,7 @@
 /*Ingredient acts primarily as a wrapper to consolidate and allow an easy way to access the appropriate data types
 * and modify them, should changes need to be made.
 */
-public class Ingredient
+public class Ingredient: Equatable, Hashable
 {
 	private var name = ""
 	private var item_type = ""
@@ -95,10 +95,18 @@ public class Ingredient
 		}
 		return retval
 	}
+	
+	public func hash(into hasher: inout Hasher)
+  {
+    hasher.combine(self.name)
+    hasher.combine(self.item_type)
+    hasher.combine(self.quantity)
+    hasher.combine(self.unit)
+  }
+  
+  public static func ==(lhs: Ingredient, rhs: Ingredient) -> Bool
+  {
+    return lhs.name.elementsEqual(rhs.name)
+  }
 }
-
-
-
-
-
 

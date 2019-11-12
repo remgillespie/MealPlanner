@@ -1,29 +1,30 @@
-import Ingredient
 
-public class Recipe
+public class Recipe: Equatable, Hashable
 {
 	//list of ingredients or an array of ingredients, if an array will need to resize dynamically
 	private var meal = ""
-	private var list = nil
+	private var list = Set<Ingredient>()
 	private var directions = ""
 	
 	public init(meal_name: String)
 	{
 		self.meal = meal_name
+<<<<<<< Updated upstream
 		self.list = Set<Ingredients>()
+=======
+>>>>>>> Stashed changes
 	}
 	
-	//need to check that we can pass Sets in this fashion
 	public init(meal_name: String, ingredients: Set<Ingredient>)
 	{
 		self.meal = meal_name
-		self.list = ingredients
+		self.list = self.list.union(ingredients)
 	}
 	
-	public init(meal_name: String, ingredients: Set<Ingredients>, directions: String)
+	public init(meal_name: String, ingredients: Set<Ingredient>, directions: String)
 	{
 		self.meal = meal_name
-		self.list = ingredients
+		self.list = self.list.union(ingredients)
 		self.directions = directions
 	}
 	
@@ -43,9 +44,9 @@ public class Recipe
 	public func add_ingredients(item: Ingredient, option: Int) -> Bool
 	{
 		var bool_val = false
-		if(option)/*Option 1: Always places item into the list*/
+		if(option==1)/*Option 1: Always places item into the list*/
 		{
-			list.update(item)
+			list.update(with: item)
 			bool_val = true
 		}
 		else/*Option 2*/
@@ -80,7 +81,7 @@ public class Recipe
 	/*Returns the directions otherwise states that there aren't any*/
 	public func get_directions() -> String
 	{
-		return (directions!="") ? self.directions : "No directions"
+		return (self.directions.isEmpty) ? "No directions" : self.directions
 	}
 	
 	/*Compares difference in letters of a string
@@ -103,7 +104,16 @@ public class Recipe
 	{
 		return list.contains(item)
 	}
+
+  public func hash(into hasher: inout Hasher)
+  {
+    hasher.combine(self.meal)
+    hasher.combine(self.list)
+    hasher.combine(self.directions)
+  }
+  
+  public static func ==(lhs: Recipe, rhs: Recipe) -> Bool
+  {
+    return lhs.meal.elementsEqual(rhs.meal)
+  }
 }
-
-
-

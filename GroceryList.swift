@@ -1,20 +1,27 @@
+<<<<<<< Updated upstream
 import Ingredient
 
 public class GroceryList
 {
 	private var list = nil
+=======
+
+public class GroceryList
+{
+	
+	private var list = Set<Ingredient>()
+>>>>>>> Stashed changes
 	public var size = 0
 	
 	public init()
 	{
-		list = Set<Ingredient>
-		size = 0
+		self.size = 0
 	}
 	
 	public init(new_list: Set<Ingredient>, list_size: Int)
 	{
-		list = new_list
-		size = list_size
+		self.list = self.list.union(new_list)
+		self.size = list_size
 	}
 	
 	/*Adds an item to the grocery list and increments the size of the list
@@ -23,7 +30,7 @@ public class GroceryList
 	*/
 	public func add_item(item: Ingredient) -> Bool
 	{
-		var valid_insert = list.insert(item)
+		let valid_insert = self.list.insert(item)
 		if(valid_insert.0==true)
 		{
 			self.size += 1
@@ -36,12 +43,12 @@ public class GroceryList
 	*/
 	public func remove_item(name: String) -> Ingredient?
 	{
-		for (index, item) in list.enumerated()
+		for (index, item) in self.list.enumerated()
 		{
-			if(!item.compare(name))/*In list*/
+			if(!item.get_name().elementsEqual(name))/*In list*/
 			{
 				self.size -= 1
-				return list.remove(item)
+				return self.list.remove(item)
 			}
 		}
 		return nil
@@ -49,15 +56,15 @@ public class GroceryList
 	
 	public func get_list() -> EnumeratedSequence<Set<Ingredient>>
 	{
-		return list.enumerated()
+		return self.list.enumerated()
 	}
 	
-	public func is_member(_name: String) -> Bool
+	public func is_member(name: String) -> Bool
 	{
 		var bool_val = false
-		for (index, item) in list
+		for (index, item) in self.list.enumerated()
 		{
-			if(item.compare(name))/*In list*/
+			if(item.get_name().elementsEqual(name))/*In list*/
 			{
 				bool_val = true 
 			}
@@ -67,6 +74,6 @@ public class GroceryList
 	
 	public func is_empty() -> Bool
 	{
-		return list.isEmpty()
+		return self.list.isEmpty
 	}
 }

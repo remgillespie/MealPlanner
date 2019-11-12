@@ -1,34 +1,32 @@
-import Recipe
 
 public class RecipeList
 {
-	private var list = nil
+	private var list = Set<Recipe>()
 	
 	public init()
 	{
-		list = Set<Recipe>()
 	}
 	
 	public init(new_list: Set<Recipe>)
 	{
-		list = new_list
+		self.list = self.list.union(new_list)
 	}
 	/*Inserts the item into the list
 	*	option=1: Inserts the item unconditionally
 	*	option=2: Insert the item if it isn't already a member
 	*	Returns the boolean value of the success
 	*/
-	public func add_recipe(item: Recipe, _option: Int) -> Bool
+	public func add_recipe(item: Recipe, option: Int) -> Bool
 	{
 		var bool_val = false
-		if(option)/*Option 1*/
+		if(option==1)/*Option 1*/
 		{
-			list.update(item)
+			self.list.update(with: item)
 			bool_val = true
 		}
 		else
 		{
-			bool_val = (list.insert(item)).0
+			bool_val = (self.list.insert(item)).0
 		}
 		return bool_val
 	}
@@ -38,11 +36,11 @@ public class RecipeList
 	*/
 	public func remove_recipe(name: String) -> Recipe?
 	{
-		for (index, item) in list.enumerated()
+		for (index, item) in self.list.enumerated()
 		{
-			if(!item.compare(name))/*The same item*/
+			if(!item.get_meal_name().elementsEqual(name))/*The same item*/
 			{
-				return list.remove(item)
+				return self.list.remove(item)
 			}
 		}
 		return nil
@@ -53,7 +51,7 @@ public class RecipeList
 	*/
 	public func get_list() -> EnumeratedSequence<Set<Recipe>>
 	{
-		return list.enumerated()
+		return self.list.enumerated()
 	}
 	
 	/*Checks if the given recipe name is a member of the list
@@ -62,9 +60,9 @@ public class RecipeList
 	public func is_member(name: String) -> Bool
 	{
 		var bool_val = false
-		for (index, item) in list.enumerated()
+		for (index, item) in self.list.enumerated()
 		{
-			if(!item.compare(name))/*Item is in list*/
+			if(!item.get_meal_name().elementsEqual(name))/*Item is in list*/
 			{
 				bool_val = true
 			}
@@ -76,6 +74,6 @@ public class RecipeList
 	*/
 	public func is_empty() -> Bool
 	{
-		list.isEmpty()
+		return self.list.isEmpty
 	}
 }
