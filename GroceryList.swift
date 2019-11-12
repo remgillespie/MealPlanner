@@ -1,16 +1,8 @@
-<<<<<<< Updated upstream
-import Ingredient
-
-public class GroceryList
-{
-	private var list = nil
-=======
 
 public class GroceryList
 {
 	
 	private var list = Set<Ingredient>()
->>>>>>> Stashed changes
 	public var size = 0
 	
 	public init()
