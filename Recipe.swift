@@ -82,20 +82,22 @@ public class Recipe: Equatable, Hashable
 	
 	/*Compares difference in letters of a string
 		traditional comparator return values*/
-	public func compare(name: String) -> Bool
+	public func compare(item: Recipe) -> Int
 	{
-		var retval = true
-		for (letter1, letter2) in zip(self.meal, name)
+		var retval = 0
+		for (letter1, letter2) in zip(self.meal, item.meal)
 		{
-			if((Int(String(letter1))! - Int(String(letter2))!) != 0)
+      retval = Int(String(letter1))! - Int(String(letter2))!   
+			if(retval != 0)
 			{
-				retval = false
 				break
 			}
 		}
 		return retval
 	}
 	
+	/*Checks to see if the Ingredient is in the list
+	*/
 	public func is_member(item: Ingredient) -> Bool
 	{
 		return list.contains(item)

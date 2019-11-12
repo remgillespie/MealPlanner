@@ -78,18 +78,16 @@ public class Ingredient: Equatable, Hashable
 		return self.unit
 	}
 	
-	/*Compares an Ingredient
-	*	Return functions as a traditional comparator
-	*/
-	public func compare(item: Ingredient) -> Bool
+	/*Compares difference in letters of a string
+		traditional comparator return values*/
+	public func compare(item: Ingredient) -> Int
 	{
-		var retval = true
-		/*Might need to use zip() or use the two lines above*/
+		var retval = 0
 		for (letter1, letter2) in zip(self.name, item.name)
 		{
-			if((Int(String(letter1))! - Int(String(letter2))!) != 0)
+      retval = Int(String(letter1))! - Int(String(letter2))!
+			if(retval != 0)
 			{
-				retval = false
 				break
 			}
 		}

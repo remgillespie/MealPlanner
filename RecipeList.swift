@@ -38,7 +38,7 @@ public class RecipeList
 	{
 		for (index, item) in self.list.enumerated()
 		{
-			if(!item.get_meal_name().elementsEqual(name))/*The same item*/
+			if(item.get_meal_name().elementsEqual(name))/*The same item*/
 			{
 				return self.list.remove(item)
 			}
@@ -62,9 +62,10 @@ public class RecipeList
 		var bool_val = false
 		for (index, item) in self.list.enumerated()
 		{
-			if(!item.get_meal_name().elementsEqual(name))/*Item is in list*/
+      bool_val = item.get_meal_name().elementsEqual(name)
+			if(bool_val)/*Item is in list*/
 			{
-				bool_val = true
+				break
 			}
 		}
 		return bool_val

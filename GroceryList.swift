@@ -37,6 +37,7 @@ public class GroceryList
 	{
 		for (index, item) in self.list.enumerated()
 		{
+
 			if(!item.get_name().elementsEqual(name))/*In list*/
 			{
 				self.size -= 1
@@ -46,24 +47,31 @@ public class GroceryList
 		return nil
 	}
 	
+	/*Returns the grocery list
+	*/
 	public func get_list() -> EnumeratedSequence<Set<Ingredient>>
 	{
 		return self.list.enumerated()
 	}
 	
+	/*Checks to see if the name is common to any elements in the list
+	*/
 	public func is_member(name: String) -> Bool
 	{
 		var bool_val = false
 		for (index, item) in self.list.enumerated()
 		{
-			if(item.get_name().elementsEqual(name))/*In list*/
+			bool_val = item.get_name().elementsEqual(name)
+			if(bool_val)/*In list*/
 			{
-				bool_val = true 
+				break
 			}
 		}
 		return bool_val
 	}
 	
+	/*Checks to see if the list is empty
+	*/
 	public func is_empty() -> Bool
 	{
 		return self.list.isEmpty
