@@ -97,16 +97,16 @@ public class Ingredient: Equatable, Hashable
 	}
 	
 	public func hash(into hasher: inout Hasher)
-  {
-    hasher.combine(self.name)
-    hasher.combine(self.item_type)
-    hasher.combine(self.quantity)
-    hasher.combine(self.unit)
-  }
+  	{
+    		hasher.combine(self.name)
+    		hasher.combine(self.item_type)
+    		hasher.combine(self.quantity)
+    		hasher.combine(self.unit)
+  	}
   
-  public static func ==(lhs: Ingredient, rhs: Ingredient) -> Bool
-  {
-    return lhs.name.elementsEqual(rhs.name)
-  }
+  	public static func ==(lhs: Ingredient, rhs: Ingredient) -> Bool
+  	{
+    		return lhs.name.elementsEqual(rhs.name)
+  	}
 }
 
