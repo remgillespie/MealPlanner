@@ -101,15 +101,15 @@ public class Recipe: Equatable, Hashable
 		return list.contains(item)
 	}
 
-  public func hash(into hasher: inout Hasher)
-  {
-    hasher.combine(self.meal)
-    hasher.combine(self.list)
-    hasher.combine(self.directions)
-  }
+  	public func hash(into hasher: inout Hasher)
+  	{
+    		hasher.combine(self.meal)
+    		hasher.combine(self.list)
+    		hasher.combine(self.directions)
+  	}
   
-  public static func ==(lhs: Recipe, rhs: Recipe) -> Bool
-  {
-    return lhs.meal.elementsEqual(rhs.meal)
-  }
+  	public static func ==(lhs: Recipe, rhs: Recipe) -> Bool
+  	{
+    		return lhs.meal.elementsEqual(rhs.meal)
+  	}
 }
